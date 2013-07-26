@@ -19,5 +19,4 @@ source("DyMSiM.R")
 # of years covered by dates) 
 DyMSiM(date, # An n-length vector of dates
 			 temp, # An n-length vector of daily mean temperatures (in deg C)
-			 precip, # An n-length vector of daily water input (precipitation and/or irrigation) (cm)
-			 ...)
+			 precip) # An n-length vector of daily water input (precipitation and/or irrigation) (cm)
