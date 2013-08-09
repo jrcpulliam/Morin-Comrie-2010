@@ -12,9 +12,13 @@ s_percent <- function(t,a=aa,b=bb,c=cc){
 	}
 	return(y)
 }
+#Test equation 12
+x.vals <- seq(0,49,.5)
+temp.vals <- sapply(x.vals,s_percent)
+
+plot(x.vals,temp.vals)
 
 #Equation 14: Gonotrophic cycle 
-
 dd = 17.75
 ff = -0.0613
 
@@ -29,3 +33,8 @@ g_cycle <- function(t,d=dd,f=ff) {
 	}
 	return(y)
 	}}} 
+#Test equation 14
+x.vals <- seq(0,49,.5)
+gono.vals <- sapply(x.vals,g_cycle)		 
+
+plot(x.vals,gono.vals)
