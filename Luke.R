@@ -12,3 +12,20 @@ s_percent <- function(t,a=aa,b=bb,c=cc){
 	}
 	return(y)
 }
+
+#Equation 14: Gonotrophic cycle 
+
+dd = 17.75
+ff = -0.0613
+
+g_cycle <- function(t,d=dd,f=ff) {
+	if (t<32 & t>=13) {
+		y <- 1/d*exp(ff*t)
+	}else{ 
+	if (t<13) {
+		y <- 0
+	}else{ if (t>=32) {
+		y <- 1/2.5
+	}
+	return(y)
+	}}} 
