@@ -16,7 +16,10 @@ s_percent <- function(t,a=aa,b=bb,c=cc){
 x.vals <- seq(0,49,.5)
 temp.vals <- sapply(x.vals,s_percent)
 
-plot(x.vals,temp.vals)
+plot(x.vals,temp.vals,type="p",ylim=c(0,1))
+abline(h=c(0,1),col="grey")
+abline(v=c(12,37))
+abline(h=.1554)
 
 #Equation 14: Gonotrophic cycle 
 dd = 17.75
@@ -38,3 +41,4 @@ x.vals <- seq(0,49,.5)
 gono.vals <- sapply(x.vals,g_cycle)		 
 
 plot(x.vals,gono.vals)
+abline(v=c(13,32))
