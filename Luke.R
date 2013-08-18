@@ -1,14 +1,15 @@
 #Equations 12 & 14
 #Equation 12: Equation to relate temperature to survival percent.
-aa <- -0.0057
-bb <- 0.2826
-cc <- -2.5551
+a1 = -0.0057
+a2 = 0.2826
+a3 = -2.5551
+a4 = 0.1554
 
-s_percent <- function(t,a=aa,b=bb,c=cc){
-  if (t>12 & t<37)	{
+s_percent <- function(t,a=a1,b=a2,c=a3,d=a4){
+	if (t>12 & t<37)	{
 		y<- a*t^2 + b*t + c
 	}else{
-		y<- 0.1554
+		y<- d
 	}
 	return(y)
 }
@@ -22,17 +23,19 @@ abline(v=c(12,37))
 abline(h=.1554)
 
 #Equation 14: Gonotrophic cycle 
-dd = 17.75
-ff = -0.0613
+b1 = 17.75
+b2 = -0.0613
+b3 = 0
+b4 = 1/2.5
 
-g_cycle <- function(t,d=dd,f=ff) {
+g_cycle <- function(t,d=b1,f=b2,g=b3,h=b4) {
 	if (t<32 & t>=13) {
-		y <- 1/(d*exp(ff*t))
+		y <- 1/(d*exp(f*t))
 	}else{ 
 	if (t<13) {
-		y <- 0
+		y <- g
 	}else{ if (t>=32) {
-		y <- 1/2.5
+		y <- h
 	}
 	return(y)
 	}}} 
