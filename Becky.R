@@ -21,6 +21,7 @@ s_percent <- function(t,a=a1,b=a2,c=a3,d=a4){
 #Equation "development": the combined development time of the larvae and pupae at a given temperature.
 #Explicit equation not included in the article, but is used in Eqn 13.  
 #NEEDS TO BE REDEFINED (unless we don't actually need a function here).
+#Possibly refer to Rueda et al. (1990) ?
 
 development <- function(t){
   y<- t       #insert function for Dt here 
@@ -30,9 +31,15 @@ development <- function(t){
 #Equation 13: Equation for the daily survival rate for larvae and pupae.
 #Requires Eqn 12 (survival percent) and Dt (combined development time of the larae and pupae at a given temperature)
 
-s_rate <- function(t, Sl = s_percent(t), Dt = development(t)){ #need to add Dt
+s_rate <- function(t, Sl = s_percent(t), Dt = development(t)){ 
   y<- 10^(log10(Sl/Dt))
   return(y)
 }
+
+#Test equation 13
+x.vals <- seq(0,49,.5)
+rate.vals <- sapply(x.vals,s_rate)
+
+plot(x.vals,rate.vals,type="p")
 
 
