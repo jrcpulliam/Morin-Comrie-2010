@@ -27,3 +27,32 @@ Et<- function(par9,temp,par10)
 # par9 = constant from El Rayah and Abu Groun
 # temp = temp in C
 # par10 = constant from El Rayah and Abu Groun
+# Equation 12: Equation to relate temperature to survival percent. 
+eqn_12 <- function(t,
+                   a=-0.0057,
+                   b=0.2826,
+                   c=-2.5551,
+                   d=0.1554){
+	if (t>12 & t<37)	{
+		y<- a*t^2 + b*t + c
+	}else{
+		y<- d
+	}
+	return(y)
+}
+#Equation 14: Gonotrophic cycle  
+eqn_14 <- function(t,
+                   d=17.75,
+                   f=-0.0613,
+                   g=0,
+                   h=1/2.5) {
+	if (t<32 & t>=13) {
+		y <- 1/(d*exp(f*t))
+	}else{ 
+	if (t<13) {
+		y <- g
+	}else{ if (t>=32) {
+		y <- h
+	}
+	return(y)
+	}}}  
