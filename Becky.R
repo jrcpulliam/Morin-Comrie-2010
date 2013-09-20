@@ -18,7 +18,7 @@ eqn_12 <- function(t,a=a1,b=a2,c=a3,d=a4){
   return(y)
 }
 
-#Equation "development": the combined development time of the larvae and pupae at a given temperature.
+#Equation 11 r(K) "development": the combined development time of the larvae and pupae at a given temperature.
 #Explicit equation not included in the article, but is used in Eqn 13.  
 #NEEDS TO BE REDEFINED (unless we don't actually need a function here).
 #Possibly refer to Rueda et al. (1990) ?
@@ -57,18 +57,17 @@ names(all.parms) <- c(paste("i1",names(parms.instar1),sep="."),
 											paste("i4",names(parms.instar4),sep="."),
 											paste("p",names(parms.pupae),sep="."))
 all.parms
-
-development <- function(t){
-  y<- t       #insert function for Dt here 
-  return(y)
-}
-
+ 
 ###############
-r <- function(K,parms){
+eqn_11 <- function(K=5,parms=all.parms){
 	
-	r.instar1<-(i1.RH025*K/298.15)*exp((i1.HA/1.987)
+	r.instar1<-(i1.RH025*K/298.15)*exp((i1.HA/1.987)*((1/298.15)-1/K))/(1+exp((i1.HH/1.987)((1/i1.TH)-1/K)))
+	r.instar2<-(i2.RH025*K/298.15)*exp((i2.HA/1.987)*((1/298.15)-1/K))/(1+exp((i2.HH/1.987)((1/i2.TH)-1/K)))
+	r.instar3<-(i3.RH025*K/298.15)*exp((i3.HA/1.987)*((1/298.15)-1/K))/(1+exp((i3.HH/1.987)((1/i3.TH)-1/K)))
+	r.instar4<-(i4.RH025*K/298.15)*exp((i4.HA/1.987)*((1/298.15)-1/K))/(1+exp((i4.HH/1.987)((1/i4.TH)-1/K)))
+	r.pupae<-(p.RH025*K/298.15)*exp((p.HA/1.987)*((1/298.15)-1/K))/(1+exp((p.HH/1.987)((1/p.TH)-1/K)))
 	
-	y<- list(c(r.instar1,r.instar2,r.instar3,r.instar4,r.pupae)       #insert function for Dt here 
+	y<- list(c(r.instar1,r.instar2,r.instar3,r.instar4,r.pupae))      
 	return(y)
 }
 ###############
@@ -76,7 +75,7 @@ r <- function(K,parms){
 #Equation 13: Equation for the daily survival rate for larvae and pupae.
 #Requires Eqn 12 (survival percent) and Dt (combined development time of the larae and pupae at a given temperature)
 
-eqn_13 <- function(t, Sl = eqn_12(t), Dt = development(t)){ 
+eqn_13 <- function(t, Sl = eqn_12(t), Dt = eqn_11()){ 
   y<- 10^(log10(Sl/Dt))
   return(y)
 }
