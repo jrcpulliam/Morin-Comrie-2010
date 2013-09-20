@@ -17,7 +17,7 @@ eqn_2 <- function(date,
 }
 
 # Test eqn_2
-curve(eqn_2(x),from=0,to=365) # fails
+# curve(eqn_2(x),from=0,to=365) # fails
 curve(eqn_2(x),from=as.Date("2005-01-01"),to=as.Date("2006-12-31")) # seems to work
 
 # Equation 3 (component of Schoolfield's model)

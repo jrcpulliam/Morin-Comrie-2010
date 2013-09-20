@@ -6,7 +6,8 @@ rm(list=ls())
 
 # This file will contain inputs to the function DyMSiM and will be used to test your model
 # output
-load("testdata.Rdata")
+# load("testdata.Rdata")
+load("~/Dropbox/LabMeetings/MorinComrie2010/testdata.Rdata")
 
 # You should have a file named DyMSiM.R that runs any files necessary to run your model
 source("DyMSiM.R")
