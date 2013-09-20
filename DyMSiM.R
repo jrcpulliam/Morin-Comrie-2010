@@ -48,3 +48,7 @@ plot(date,eqn_1(temp,e_s=1,date),bty="L",main="Gainesville",
 warning("Value for e_s not determined. Using e_s = 1.")
 
 source("Ajit_Morin and Comrie.R")
+
+DyMSiM <- function(dt,temp.C,precip.cm){
+	warning("This function currently doesn't do anything!")
+}
